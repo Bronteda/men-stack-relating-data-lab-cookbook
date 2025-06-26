@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= recipe.name%></title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1><%= recipe.name%></h1>
+
+    <h3>Instructions:</h3>
+    <p><%= recipe.instructions %></p>
+
+    <h3>Ingredients:</h3>
+    <ul>
+      <% recipe.ingredients.forEach(ingredient => { %>
+      <li><%= ingredient.name %></li>
+      <% }) %>
+    </ul>
+
+    <form action="/ingredients" method="POST">
+      <label for="ingredientName"></label>
+      <input type="text" id="ingredientName" name="name">
+      <input type="hidden" name="recipeId" value="<%= recipe ? recipe._id : '' %>">
+      <button type="submit">Add Ingredient</button>
+    </form>
+
+    <form action="/recipes/<%= recipe._id%>?_method=DELETE" method="POST">
+        <button type=submit>Delete Recipe</button>
+    </form>
+
+    <a href="/recipes/<%= recipe._id%>/edit">Edit Recipe</a>
+    <a href="/recipes">Back to all recipes</a>
+  </body>
+</html>
