@@ -26,7 +26,6 @@ Edit /ingredients/:ingredientId/edit GET
 Update /ingredients/:ingredientId PUT
 Delete /ingredients/:ingredientId DELETE
 
-
 When using certain methods e.g
 const User = await User.findOne({email});
 if(!User){ //create a new user }

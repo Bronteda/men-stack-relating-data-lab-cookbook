@@ -11,6 +11,7 @@ const authController = require("./controllers/auth.js");
 const foodsController = require("./controllers/foods.js");
 const recipesController = require("./controllers/recipes.js");
 const ingredientsController = require("./controllers/ingredients.js");
+const userController = require("./controllers/users.js");
 
 //middleware -before any routes that check for a valid user or require a user to be signed in to view a page.
 const isSignedIn = require("./middleware/is-signed-in.js");
@@ -56,6 +57,7 @@ app.use(isSignedIn); //This means all the routes after isSignedIn require a sign
 app.use("/users/:userId/foods", foodsController);
 app.use("/recipes", recipesController);
 app.use("/ingredients", ingredientsController);
+app.use("/users", userController);
 
 //listening
 app.listen(port, () => {

@@ -5,15 +5,16 @@ const User = require("../models/user.js");
 const Ingredient = require("../models/ingredient.js");
 const Recipe = require("../models/recipe.js");
 
-router.get("/", async (req, res) => {
-  try {
-    const ingredients = await Ingredient.find({});
-    res.render("ingredients/index.ejs", { ingredients });
-  } catch (e) {
-    console.error("Cannot find ingredients", e);
-    res.status(500).send("Error Loading form");
-  }
-});
+//we don't need a index route they can add ingredients when adding a recipe
+// router.get("/", async (req, res) => {
+//   try {
+//     const ingredients = await Ingredient.find({});
+//     res.render("ingredients/index.ejs", { ingredients });
+//   } catch (e) {
+//     console.error("Cannot find ingredients", e);
+//     res.status(500).send("Error Loading form");
+//   }
+// });
 
 router.get("/new", (req, res) => {
   res.render("ingredients/new.ejs");

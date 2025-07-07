@@ -45,7 +45,7 @@ router.post("/", async (req, res) => {
 router.get("/:recipeId", async (req, res) => {
   try {
     const currentRecipe = await Recipe.findById(req.params.recipeId).populate(
-      "ingredients"
+      "ingredients",
     );
     //console.log(currentRecipe);
     res.render("recipes/show.ejs", { recipe: currentRecipe });
@@ -76,7 +76,7 @@ router.delete("/:recipeId", async (req, res) => {
 router.get("/:recipeId/edit", async (req, res) => {
   try {
     const currentRecipe = await Recipe.findById(req.params.recipeId).populate(
-      "ingredients"
+      "ingredients",
     );
     res.render("recipes/edit.ejs", { recipe: currentRecipe });
   } catch (e) {
@@ -91,7 +91,7 @@ router.put("/:recipeId", async (req, res) => {
     const updatedRecipeData = {
       name: req.body.name,
       instructions: req.body.instructions,
-      //isArray I learnt about 
+      //isArray I learnt about
       ingredients: Array.isArray(req.body.ingredients)
         ? req.body.ingredients
         : [req.body.ingredients], // handles single checkbox case

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= user.username%> Recipes</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <% if(recipes) { %>
+         <h1><%= user.username%> Recipes</h1>
+         <% recipes.forEach(recipe => { %>
+            <h2><%= recipe.name %></h2>
+
+            <h3>Instructions:</h3>
+            <p><%= recipe.instructions %></p>
+
+            <h3>Ingredients:</h3>
+            <ul>
+                <% recipe.ingredients.forEach(ingredient => { %>
+                <li><%= ingredient.name %></li>
+            </ul>
+            <% }) %> 
+            <hr />
+        <% }) %>
+    <% } else { %>
+        <h2>No recipes exist</h2>
+    <% } %>
+   
+  </body>
+</html>

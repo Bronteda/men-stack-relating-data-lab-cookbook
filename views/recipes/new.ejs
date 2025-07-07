@@ -29,8 +29,12 @@
                 </div>
               <% }) %>
             </fieldset>
-
             <button type="submit">Submit</button>
+        </form>
+        <form action="/ingredients" method="POST">
+            <label for="ingredientName"></label>
+            <input type="text" id="ingredientName" name="name">
+            <button type="submit">Add Ingredient</button>
         </form>
   </body>
 </html>
